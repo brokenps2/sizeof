@@ -8,7 +8,7 @@ int type;
 //2 = mbytes
 //3 = gbytes
 //4 = tbytes
-int bytes;
+double bytes;
 char* format;
 
 int main(int argc, char** argv) {
@@ -27,27 +27,26 @@ int main(int argc, char** argv) {
   }
   if(st.st_size >= 1000) {
     type = 1;
-    bytes = st.st_size / 1000;
+    bytes = (double)st.st_size / 1000;
     format = "kilobytes";
   }
   if(st.st_size >= 1000000) {
     type = 2;
-    bytes = st.st_size / 1000000;
+    bytes = (double)st.st_size / 1000000;
     format = "megabytes";
   }
   if(st.st_size >= 1000000000) {
     type = 3;
-    bytes = st.st_size / 1000000000;
+    bytes = (double)st.st_size / 1000000000;
     format = "gigabytes";
   }
   if(st.st_size >= 1000000000000) {
     type = 4;
-    bytes = st.st_size / 1000000000000;
+    bytes = (double)st.st_size / 1000000000000;
     format = "terabytes";
   }
 
-
-  printf("%i %s\n", bytes, format);
+  printf("%.2lf %s\n", bytes, format);
   return 0;
 
 }
